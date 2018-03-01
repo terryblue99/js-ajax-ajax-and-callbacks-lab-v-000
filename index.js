@@ -5,7 +5,7 @@ function searchRepositories() {
   // req.addEventListener("load", showRepositories);
   var url = `https://api.github.com/search/repositories?q=${searchTerms}`)
   $(document).ready(function (){
-    $.get(url, function(data) {
+    $.get(url, function(response) {
       // This is called when the .html file request exists
       showRepositories()
     }).fail(function() {

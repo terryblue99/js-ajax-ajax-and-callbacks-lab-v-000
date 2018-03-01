@@ -1,18 +1,18 @@
 
 function searchRepositories() {
 //   // const req = new XMLHttpRequest()
-//   var searchTerms = document.getElementById("searchTerms").value
+  var searchTerms = document.getElementById("searchTerms").value
 //   // req.addEventListener("load", showRepositories);
-//   var url = `https://api.github.com/search/repositories?q=${searchTerms}`)
-//   $(document).ready(function (){
-//     $.get(url, function(response) {
-//       // This is called when the .html file request exists
-//       showRepositories()
-//     }).fail(function() {
-//       // This is called when an error occurs
-//       displayError()
-//     });
-//   });
+  var url = `https://api.github.com/search/repositories?q=${searchTerms}`
+  $(document).ready(function (){
+    $.get(url, function(response) {
+      // This is called when the .html file request exists
+      showRepositories()
+    }).fail(function() {
+      // This is called when an error occurs
+      displayError()
+    });
+  });
 }
 
 function displayError() {

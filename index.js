@@ -3,15 +3,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
   Handlebars.registerPartial("authorPartial", document.getElementById("author-partial-template").innerHTML)
 });
 
-$(document).ready(function (){
 
-});
 function searchRepositories() {
   const req = new XMLHttpRequest()
   var searchTerms = document.getElementById("searchTerms").value;
   req.addEventListener("load", showRepositories);
   req.open("GET", `https://api.github.com/search/repositories?q=${searchTerms}`)
   req.send()
+  $(document).ready(function (){
+
+  });
 }
 
 function showRepositories(event, data) {

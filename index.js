@@ -1,11 +1,11 @@
 
 function searchRepositories() {
-//   // const req = new XMLHttpRequest()
+  const req = new XMLHttpRequest()
   var searchTerms = document.getElementById("searchTerms").value
-//   // req.addEventListener("load", showRepositories);
+  req.addEventListener("load", showRepositories);
   var url = `https://api.github.com/search/repositories?q=${searchTerms}`
   $(document).ready(function (){
-    $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, function(response) {
+    $.get(url, function(response) {
       // This is called when the .html file request exists
       showRepositories()
     }).fail(function() {

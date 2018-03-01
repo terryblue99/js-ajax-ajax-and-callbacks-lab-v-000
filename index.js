@@ -1,18 +1,23 @@
-// Register a partial with Handlebars when the page loads
-document.addEventListener("DOMContentLoaded", function(event) {
-  Handlebars.registerPartial("authorPartial", document.getElementById("author-partial-template").innerHTML)
-});
-
 
 function searchRepositories() {
-  const req = new XMLHttpRequest()
-  var searchTerms = document.getElementById("searchTerms").value;
-  req.addEventListener("load", showRepositories);
-  req.open("GET", `https://api.github.com/search/repositories?q=${searchTerms}`)
-  req.send()
+  // const req = new XMLHttpRequest()
+  var searchTerms = document.getElementById("searchTerms").value
+  // req.addEventListener("load", showRepositories);
+  var url = `https://api.github.com/search/repositories?q=${searchTerms}`)
   $(document).ready(function (){
-
+    $.get(url, function(data) {
+      // This is called when the .html file request exists
+      showRepositories()
+    }).fail(function() {
+      // This is called when an error occurs
+      displayError()
+    });
   });
+}
+
+function displayError() {
+  errorMessage = "I'm sorry, there's been an error. Please try again."
+  document.getElementById("error").innerHTML = errorMessage
 }
 
 function showRepositories(event, data) {

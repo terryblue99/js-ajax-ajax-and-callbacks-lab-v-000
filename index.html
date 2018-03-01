@@ -29,35 +29,11 @@
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
-        <div id="results">
-          <script id="repository-template" type="text/x-handlebars-template">
-            <ul>
-             {{#each this}}
-               <li>
-                 <h2><a href="{{html_url}}">{{name}}</a></h2>
-                 <!-- Render the partial template via
-                 the {{> authorPartial owner}} line -->
-                 {{> authorPartial owner }}
-                 <p>Watchers: {{watchers_count}}</p>
-                 <p>Forks: {{forks_count}}</p>
-                 <p>Issues: {{open_issues_count}}</p>
-               </li>
-              {{/each}}
-            </ul>
-          </script>
-        </div>
+        <div id="results"></div>
       </div>
       <div>
         <h3>Details</h3>
         <div id="details"></div>
-      </div>
-      <div>
-        <script id="author-partial-template" type="text/x-handlebars-template">
-          <section>
-            <header><h4>Created By {{login}}</h4></header>
-            <img src="{{avatar_url}}" height="32" width="32">
-          </section>
-        </script>
       </div>
     </div>
     <script src="jquery-3.1.0.min.js"></script>

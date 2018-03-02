@@ -1,7 +1,7 @@
 
 function searchRepositories() {
   console.log("*** searchRepositories()")
-  const req = new XMLHttpRequest()
+  const req
   var searchTerms = document.getElementById("searchTerms").value
   // req.addEventListener("load", showRepositories);
   var url = `https://api.github.com/search/repositories?q=${searchTerms}`

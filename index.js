@@ -6,15 +6,15 @@ function searchRepositories() {
   // req.addEventListener("load", showRepositories);
   var url = `https://api.github.com/search/repositories?q=${searchTerms}`
   $(document).ready(function (){
-    console.log("*** $(document).ready(function ()")
-    console.log("*** ", url)
+    // console.log("*** $(document).ready(function ()")
+    // console.log("*** ", url)
     $.get(url, function(data) {
-      console.log("*** $.get(url, function(response)")
+      // console.log("*** $.get(url, function(response)")
       // This is called when the .html file request exists
       showRepositories(data)
     })
     .fail(function() {
-      console.log("*** fail(function()")
+      // console.log("*** fail(function()")
       // This is called when an error occurs
       displayError()
     });

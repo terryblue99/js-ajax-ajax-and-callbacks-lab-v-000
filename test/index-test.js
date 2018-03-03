@@ -54,7 +54,6 @@ describe('index.js', () => {
       it('calls out to the github search API and displays results', () => {
         window.$('#searchTerms').val('tetris')
         searchRepositories()
-        console.log("+++ requests[0]: ", requests[0])
         requests[0].respond(200, { "Content-Type": "application/json" }, resultsData())
         expect(requests[0].url).toMatch(/https:\/\/api.github.com\/search\/repositories\?q=tetris/)
         expect(window.$('#results').html()).toMatch(/Tetris/)

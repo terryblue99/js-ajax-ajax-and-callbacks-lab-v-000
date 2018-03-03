@@ -38,7 +38,8 @@ function showRepositories(data) {
   console.log("*** ownerURL: ", data.items[0].owner.url)
   const repoList = `<ul>${data.items.map(r => '<li><a href="https://github.com/'+r.owner.login+'/'+ r.name +
   '" target="_blank">'+r.name+'</a> -'+r.description+' - <a href="#" data-repository="' + r.name +
-  '" onclick="showCommits(this)">Show Commits</a></li>').join('')}</ul>`
+  '" onclick="showCommits(this)">Show Commits</a></li>' +
+  '<p>'+r.owner.login + ' ' + r.owner.url+'</p>').join('')}</ul>`
   document.getElementById("results").innerHTML = repoList
 
 }

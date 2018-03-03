@@ -28,7 +28,7 @@ function displayError() {
 }
 
 function showRepositories(data) {
-  console.log("*** showRepositories(event, data)", data)
+  console.log("*** showRepositories(data)", data)
 
 }
 

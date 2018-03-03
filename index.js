@@ -36,9 +36,8 @@ function showRepositories(data) {
   console.log("*** ownerLogin: ", data.items[0].owner.login)
   console.log("*** ownerAvatarURL: ", data.items[0].owner.avatar_url)
   console.log("*** ownerURL: ", data.items[0].owner.url)
-  const repoList = `<ul>${data.items.map(r => '<li>' + r.name +
-  ' - <a href="https://github.com/'+r.owner.login+'/'+ r.name +
-  '" target="_blank">Show Repo</a> - <a href="#" data-repository="' + r.name +
+  const repoList = `<ul>${data.items.map(r => '<li><a href="https://github.com/'+r.owner.login+'/'+ r.name +
+  '" target="_blank">'+r.name+'</a> -'+r.description+' - <a href="#" data-repository="' + r.name +
   '" onclick="showCommits(this)">Show Commits</a></li>').join('')}</ul>`
   document.getElementById("results").innerHTML = repoList
 

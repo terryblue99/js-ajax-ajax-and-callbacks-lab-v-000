@@ -39,7 +39,7 @@
                  <li>
                    <h2><a href="{{html_url}}">{{name}}</a></h2>
                    <h3>{{description}}</h3>
-                   <a href="#" onclick="showCommits()">Show Commits</a><br><br>
+                   <a href="#" onclick="showCommits()">Show Commits</a>
                    <!-- Render the partial template -->
                    {{> authorPartial owner }}
                  </li>
@@ -59,7 +59,21 @@
         </div>
       <div>
         <h3>Details</h3>
-        <div id="details"></div>
+        <div id="details">
+          <script id="details-template" type="text/x-handlebars-template">
+            <ul>
+             {{#each this}}
+               <li>
+                 <h2><a href="{{html_url}}">{{name}}</a></h2>
+                 <h3>{{description}}</h3>
+                 <a href="#" onclick="showCommits()">Show Commits</a>
+                 <!-- Render the partial template -->
+                 {{> authorPartial owner }}
+               </li>
+              {{/each}}
+            </ul>
+          </script>
+        </div>
       </div>
     </div>
     <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v4.0.11.js"></script>

@@ -35,11 +35,23 @@ function showRepositories(data) {
 
 function showCommits() {
   console.log("*** showCommits()")
-  getCommits(el)
+  // console.log(login, name)
+  getCommits()
 
 }
 
-function getCommits(el) {
+function getCommits() {
   console.log("*** getCommits()")
+  // `https://api.github.com/repos/${userName}/` +name+ '/commits'
+  $(document).ready(function (){
+    $.get(url, function(data) {
+      // This is called when the .html file request exists
+      showRepositories(data)
+    })
+    .fail(function() {
+      // This is called when an error occurs
+      displayError()
+    });
+  });
 
 }

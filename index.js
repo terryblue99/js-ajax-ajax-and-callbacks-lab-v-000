@@ -35,5 +35,11 @@ function showRepositories(data) {
 
 function showCommits() {
   console.log("*** showCommits()")
+  getCommits(el)
+
+}
+
+function getCommits(el) {
+  console.log("*** getCommits()")
 
 }

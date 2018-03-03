@@ -1,3 +1,7 @@
+// Register a partial with Handlebars when the page loads
+document.addEventListener("DOMContentLoaded", function(event) {
+  Handlebars.registerPartial("authorPartial", document.getElementById("author-partial-template").innerHTML)
+});
 
 function searchRepositories() {
   const req = new XMLHttpRequest()
@@ -22,13 +26,11 @@ function displayError() {
 }
 
 function showRepositories(data) {
-  const repoList = `<ul>${data.items.map(r => '<li><a href="https://github.com/'+r.owner.login+'/'+ r.name +
-  '" target="_blank">'+r.name+'</a> -'+r.description+' - <a href="#" data-repository="' + r.name +
-  '" onclick="showCommits(this)">Show Commits</a></li>' +
-  '<p>'+r.owner.login + ' ' + r.owner.url+'</p>' +
-  '<p><img src="'+r.owner.avatar_url+'" height="32" width="32"></p>').join('')}</ul>`
+  console.log(data)
+  const src = document.getElementById("repository-template").innerHTML
+  const template = Handlebars.compile(src)
+  const repoList = template(data.items)
   document.getElementById("results").innerHTML = repoList
-
 }
 
 function showCommits() {

@@ -3,10 +3,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   Handlebars.registerPartial("authorPartial", document.getElementById("author-partial-template").innerHTML)
 });
 
-Handlebars.registerHelper('json', function (content) {
-    return JSON.stringify(content);
-});
-
 function searchRepositories() {
   const req = new XMLHttpRequest()
   var searchTerm = document.getElementById("searchTerms").value

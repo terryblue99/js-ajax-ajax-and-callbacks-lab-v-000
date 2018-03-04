@@ -51,7 +51,6 @@ function showCommits(data) {
 }
 
 function displayError() {
-  console.log("*** displayError()")
   var errorMessage = "I'm sorry, there's been an error. Please try again."
   document.getElementById("errors").innerHTML = errorMessage
 }

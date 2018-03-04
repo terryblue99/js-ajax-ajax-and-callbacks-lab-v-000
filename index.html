@@ -37,11 +37,11 @@
               <ul>
                {{#each this}}
                  <li>
-                   <h2><a href="{{html_url}}">{{name}}</a></h2>
+                   <h2><a href="{{html_url}}" target="_blank">{{name}}</a></h2>
                    <h3>{{description}}</h3>
                    <!-- Render the partial template -->
                    {{> authorPartial owner }}
-                   <h3><a href="{{html_url}}">Profile</a></h3>
+                   <h3><a href="{{html_url}}" target="_blank">Profile</a></h3>
                    <a href="#" onclick="getCommits('{{owner.login}}', '{{name}}')">Show Commits</a>
                  </li>
                 {{/each}}

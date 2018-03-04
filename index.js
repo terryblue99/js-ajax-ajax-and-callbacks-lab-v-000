@@ -30,7 +30,6 @@ function showRepositories(data) {
 }
 
 function getCommits(userName, repo) {
-  console.log("*** getCommits()", userName, repo)
   // var searchTerm = document.getElementById("searchTerms").value
   var url = `https://api.github.com/repos/${userName}/${repo}/commits`
   $(document).ready(function (){
@@ -47,8 +46,7 @@ function getCommits(userName, repo) {
 function showCommits(data, repo) {
   const src = document.getElementById("commits-template").innerHTML
   const template = Handlebars.compile(src)
-  const commitList = template(data, repo)
-  console.log("*** commitList:", commitList)
+  const commitList = template(data)
   document.getElementById("details").innerHTML = repo + commitList
 
 }

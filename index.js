@@ -43,6 +43,11 @@ function getCommits() {
 function showCommits(data) {
   console.log("*** showCommits()")
   console.log(data)
+  const src = document.getElementById("commits-template").innerHTML
+  const template = Handlebars.compile(src)
+  const commitList = template(data)
+  document.getElementById("details").innerHTML = commitList
+
 }
 
 function displayError() {

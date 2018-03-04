@@ -39,41 +39,39 @@
                  <li>
                    <h2><a href="{{html_url}}">{{name}}</a></h2>
                    <h3>{{description}}</h3>
-                   <a href="#" onclick="getCommits()">Show Commits</a>
                    <!-- Render the partial template -->
                    {{> authorPartial owner }}
+                   <h3><a href="{{html_url}}">Profile</a></h3>
+                   <a href="#" onclick="getCommits()">Show Commits</a>
                  </li>
                 {{/each}}
               </ul>
-            </script>
-            <!-- This author Handlebars partial may be reused, say for a list of
-            commits -->
-            <script id="author-partial-template" type="text/x-handlebars-template">
-              <section>
-                <header><h4>Created By {{login}}</h4></header>
-                <h3><a href="{{html_url}}">Profile</a></h3>
-                <img src="{{avatar_url}}" height="32" width="32">
-              </section>
             </script>
           </div>
         </div>
       <div>
         <h3>Details</h3>
         <div id="details">
-          <script id="details-template" type="text/x-handlebars-template">
+          <script id="commits-template" type="text/x-handlebars-template">
             <ul>
              {{#each this}}
                <li>
-                 <h2><a href="{{html_url}}">{{name}}</a></h2>
-                 <h3>{{description}}</h3>
-                 <a href="#" onclick="getCommits()">Show Commits</a>
+                 <p>SHA: {{sha}}</p>
+                 <p>Author: {{commit.author.name}}</p>
                  <!-- Render the partial template -->
-                 {{> authorPartial owner }}
+                 {{> authorPartial author }}
                </li>
               {{/each}}
             </ul>
           </script>
         </div>
+        <!-- This author Handlebars partial may be reused by multiple templates -->
+        <script id="author-partial-template" type="text/x-handlebars-template">
+          <section>
+            <h4>Login ID: {{login}}</h4>
+            <img src="{{avatar_url}}" height="32" width="32">
+          </section>
+        </script>
       </div>
     </div>
     <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v4.0.11.js"></script>

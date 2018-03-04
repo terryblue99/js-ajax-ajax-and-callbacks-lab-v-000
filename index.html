@@ -56,10 +56,8 @@
             <ul>
              {{#each this}}
                <li>
-                 <p>SHA: {{sha}}</p>
-                 <p>Author: {{commit.author.name}}</p>
-                 <!-- Render the partial template -->
-                 {{> authorPartial author }}
+                 SHA: {{sha}}<br>
+                 Author: {{commit.author.name}} - {{> authorPartial author }}
                </li>
               {{/each}}
             </ul>
@@ -67,10 +65,8 @@
         </div>
         <!-- This author Handlebars partial may be reused by multiple templates -->
         <script id="author-partial-template" type="text/x-handlebars-template">
-          <section>
-            <h4>Login ID: {{login}}</h4>
+            Login: {{login}}
             <img src="{{avatar_url}}" height="32" width="32">
-          </section>
         </script>
       </div>
     </div>

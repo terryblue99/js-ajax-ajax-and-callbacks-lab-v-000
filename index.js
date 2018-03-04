@@ -18,12 +18,6 @@ function searchRepositories() {
   });
 }
 
-function displayError() {
-  console.log("*** displayError()")
-  var errorMessage = "I'm sorry, there's been an error. Please try again."
-  document.getElementById("errors").innerHTML = errorMessage
-}
-
 function showRepositories(data) {
   console.log(data)
   const src = document.getElementById("repository-template").innerHTML
@@ -49,4 +43,10 @@ function getCommits() {
 function showCommits(data) {
   console.log("*** showCommits()")
   console.log(data)
+}
+
+function displayError() {
+  console.log("*** displayError()")
+  var errorMessage = "I'm sorry, there's been an error. Please try again."
+  document.getElementById("errors").innerHTML = errorMessage
 }

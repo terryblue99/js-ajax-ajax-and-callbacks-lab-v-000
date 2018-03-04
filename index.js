@@ -9,7 +9,7 @@ function searchRepositories() {
   var url = `https://api.github.com/search/repositories?q=${searchTerm}`
   $(document).ready(function (){
     $.get(url, function(data) {
-      // This is called when the .html file request exists
+      // This is executed when the url file request succeeds
       const src = document.getElementById("repository-template").innerHTML
       const template = Handlebars.compile(src)
       const repoList = template(data.items)
@@ -22,17 +22,15 @@ function searchRepositories() {
 }
 
 function showCommits(userName, repo) {
-  // var searchTerm = document.getElementById("searchTerms").value
+  const details = "Commits"
   var url = `https://api.github.com/repos/${userName}/${repo}/commits`
   $(document).ready(function (){
     $.get(url, function(data) {
       // This is executed when the .html file request exists
-      console.log("repo: ", repo)
-      console.log("data: ", data)
       const src = document.getElementById("commits-template").innerHTML
       const template = Handlebars.compile(src)
       const commitList = template(data)
-      document.getElementById("details").innerHTML = commitList
+      $("#details").empty().append(details + " for Repository: " + repo + commitList);
     }).fail(function() {
       // This is called when an error occurs
       displayError()

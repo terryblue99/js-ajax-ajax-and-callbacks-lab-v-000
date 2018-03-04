@@ -11,8 +11,7 @@ function searchRepositories() {
     $.get(url, function(data) {
       // This is called when the .html file request exists
       showRepositories(data)
-    })
-    .fail(function() {
+    }).fail(function() {
       // This is called when an error occurs
       displayError()
     });
@@ -33,25 +32,21 @@ function showRepositories(data) {
   document.getElementById("results").innerHTML = repoList
 }
 
-function showCommits() {
-  console.log("*** showCommits()")
-  // console.log(login, name)
-  getCommits()
-
-}
-
 function getCommits() {
   console.log("*** getCommits()")
-  // `https://api.github.com/repos/${userName}/` +name+ '/commits'
+  var url = "https://api.github.com/repos/psnb92/tetris/commits"
   $(document).ready(function (){
     $.get(url, function(data) {
       // This is called when the .html file request exists
-      showRepositories(data)
-    })
-    .fail(function() {
+      showCommits(data)
+    }).fail(function() {
       // This is called when an error occurs
       displayError()
     });
   });
+}
 
+function showCommits(data) {
+  console.log("*** showCommits()")
+  console.log(data)
 }

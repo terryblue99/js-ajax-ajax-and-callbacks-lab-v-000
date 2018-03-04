@@ -10,19 +10,15 @@ function searchRepositories() {
   $(document).ready(function (){
     $.get(url, function(data) {
       // This is called when the .html file request exists
-      showRepositories(data)
+      const src = document.getElementById("repository-template").innerHTML
+      const template = Handlebars.compile(src)
+      const repoList = template(data.items)
+      document.getElementById("results").innerHTML = repoList
     }).fail(function() {
       // This is called when an error occurs
       displayError()
     });
   });
-}
-
-function showRepositories(data) {
-  const src = document.getElementById("repository-template").innerHTML
-  const template = Handlebars.compile(src)
-  const repoList = template(data.items)
-  document.getElementById("results").innerHTML = repoList
 }
 
 function showCommits(userName, repo) {

@@ -28,7 +28,8 @@ function showRepositories(data) {
 
 function getCommits() {
   console.log("*** getCommits()")
-  var url = "https://api.github.com/repos/psnb92/tetris/commits"
+  var searchTerm = document.getElementById("searchTerms").value
+  var url = `https://api.github.com/repos/psnb92/${searchTerm}/commits`
   $(document).ready(function (){
     $.get(url, function(data) {
       // This is called when the .html file request exists

@@ -41,7 +41,7 @@ describe('index.js', () => {
     before(() => {
       xhr = sinon.useFakeXMLHttpRequest()
       window.XMLHttpRequest = xhr
-      xhr.onCreate = function (req) { requests.push(req) }
+      xhr.onCreate = function (req) { requests.push(xhr) }
     })
     beforeEach(() => {
       requests = []
@@ -54,7 +54,7 @@ describe('index.js', () => {
       it('calls out to the github search API and displays results', () => {
         window.$('#searchTerms').val('tetris')
         searchRepositories()
-        requests[0].respond(200, { "Content-Type": "application/json" }, resultsData())
+        requests[0].respond(200, contentType, resultsData())
         expect(requests[0].url).toMatch(/https:\/\/api.github.com\/search\/repositories\?q=tetris/)
         expect(window.$('#results').html()).toMatch(/Tetris/)
       })

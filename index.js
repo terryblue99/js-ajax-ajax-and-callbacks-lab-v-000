@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function searchRepositories() {
-  const req = new XMLHttpRequest()
+  // const req = new XMLHttpRequest()
   var searchTerm = document.getElementById("searchTerms").value
   var url = `https://api.github.com/search/repositories?q=${searchTerm}`
   $(document).ready(function (){
@@ -25,26 +25,23 @@ function showRepositories(data) {
   document.getElementById("results").innerHTML = repoList
 }
 
-function getCommits(userName, repo) {
+function showCommits(userName, repo) {
   // var searchTerm = document.getElementById("searchTerms").value
   var url = `https://api.github.com/repos/${userName}/${repo}/commits`
   $(document).ready(function (){
     $.get(url, function(data) {
-      // This is called when the .html file request exists
-      showCommits(data, repo)
+      // This is executed when the .html file request exists
+      console.log("repo: ", repo)
+      console.log("data: ", data)
+      const src = document.getElementById("commits-template").innerHTML
+      const template = Handlebars.compile(src)
+      const commitList = template(data)
+      document.getElementById("details").innerHTML = commitList
     }).fail(function() {
       // This is called when an error occurs
       displayError()
     });
   });
-}
-
-function showCommits(data, repo) {
-  const src = document.getElementById("commits-template").innerHTML
-  const template = Handlebars.compile(src)
-  const commitList = template(data)
-  document.getElementById("details").innerHTML = repo + commitList
-
 }
 
 function displayError() {

@@ -42,7 +42,7 @@
                    <!-- Render the partial template -->
                    {{> authorPartial owner }}
                    <h3><a href="{{html_url}}" target="_blank">Profile</a></h3>
-                   <a href="#" onclick="getCommits('{{owner.login}}', '{{name}}')">Show Commits</a>
+                   <a href="#" onclick="showCommits('{{owner.login}}', '{{name}}')">Show Commits</a>
                  </li>
                 {{/each}}
               </ul>
@@ -53,7 +53,7 @@
         <h3>Details</h3>
         <div id="details">
           <script id="commits-template" type="text/x-handlebars-template">
-            <strong><h1>{{repo}}</h1></strong>
+            <!-- <strong><h1>{{repo}}</h1></strong> -->
             <ul>
              {{#each this}}
                <li>

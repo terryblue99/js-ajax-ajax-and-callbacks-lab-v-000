@@ -10,7 +10,7 @@ function searchRepositories() {
     $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, function(data) {
 
       if (data.total_count == 0) {
-        // This is executed when the file request succeeds but no data returned    
+        // This is executed when the file request succeeds but no data returned
         $("#results").empty()
         $("#details").empty()
         return displayError("no data found")
@@ -51,7 +51,7 @@ function displayError(param) {
   if (param == "commits") {
       errorMessage = "I'm sorry, there's been an error. Please refresh the page and try again."
   } else if (param == "no data found") {
-      errorMessage = "I'm sorry, there's no data for that repository. Please try again."
+      errorMessage = "I'm sorry, there's no data for that search. Please try again."
   }
   $("#errors").append(errorMessage);
 }

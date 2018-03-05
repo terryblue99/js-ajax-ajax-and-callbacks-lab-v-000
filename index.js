@@ -21,7 +21,8 @@ function searchRepositories() {
       const template = Handlebars.compile(src)
       const repoList = template(data.items)
       $("#details").empty()
-      $("#results").empty().append(repoList);
+      $("#results").empty().append(repoList)
+
     }).fail(function() {
       // This is called when an error occurs
       displayError("repos")
@@ -34,11 +35,13 @@ function showCommits(userName, repo) {
   $(document).ready(function (){
     $("#errors").empty()
     $.get(`https://api.github.com/repos/${userName}/${repo}/commits`, function(data) {
+
       // This is executed when the file request succeeds
       const src = document.getElementById("commits-template").innerHTML
       const template = Handlebars.compile(src)
       const commitList = template(data)
-      $("#details").empty().append(details + " for Repository: " + repo + commitList);
+      $("#details").empty().append(details + " for Repository: " + repo + commitList)
+
     }).fail(function() {
       // This is called when an error occurs
       displayError("commits")

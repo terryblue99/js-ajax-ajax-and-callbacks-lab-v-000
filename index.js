@@ -9,7 +9,9 @@ function searchRepositories() {
     $("#errors").empty()
     $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, function(data) {
       // This is executed when the file request succeeds
-      const src = $('#repository-template').val()
+      const src = document.getElementById("repository-template").innerHTML
+      // const src = $('#repository-template').val()
+      console.log("src: ", src)
       const template = Handlebars.compile(src)
       const repoList = template(data.items)
       $("#details").empty()
@@ -28,7 +30,8 @@ function showCommits(userName, repo) {
     $("#errors").empty()
     $.get(`https://api.github.com/repos/${userName}/${repo}/commits`, function(data) {
       // This is executed when the file request succeeds
-      const src = $('#commits-template').val()
+      const src = document.getElementById("commits-template").innerHTML
+      // const src = $('#commits-template').val()
       const template = Handlebars.compile(src)
       const commitList = template(data)
       $("#details").empty().append(details + " for Repository: " + repo + commitList);

@@ -39,7 +39,6 @@ function showCommits(userName, repo) {
 }
 
 function displayError(param) {
-  console.log("param: ", param)
   var errorMessage = "I'm sorry, there's been an error. Please try again."
   if (param != "repos") {
       errorMessage = "I'm sorry, there's been an error. Please refresh the page and try again."

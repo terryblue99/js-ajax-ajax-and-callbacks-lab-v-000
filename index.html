@@ -54,9 +54,9 @@
           <ul>
            {{#each this}}
              <li>
-               <p>SHA: {{sha}}</p>
+               <p><b>SHA:</b> {{sha}}</p>
                <p>{{commit.message}}</p>
-               <p>Author: {{commit.author.name}}</p>
+               <p><b>Author:</b> {{commit.author.name}}</p>
                <!-- Render the partial template -->
                {{> authorPartial author }}
              </li>

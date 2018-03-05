@@ -1,18 +1,17 @@
-$(document).ready(function (){
-});
+// $(document).ready(function (){
+// });
 // Register a partial with Handlebars when the page loads
 document.addEventListener("DOMContentLoaded", function(event) {
   Handlebars.registerPartial("authorPartial", document.getElementById("author-partial-template").innerHTML)
 });
 
 function searchRepositories() {
-  // var searchTerms = document.getElementById("searchTerms").value
   const searchTerms = $('#searchTerms').val()
-  // $(document).ready(function (){
+  $(document).ready(function (){
     $("#errors").empty()
     $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, function(data) {
-      // This is executed when the url file request succeeds
-      const src = document.getElementById("repository-template").innerHTML
+      // This is executed when the file request succeeds
+      const src = $('#repository-template').val()
       const template = Handlebars.compile(src)
       const repoList = template(data.items)
       $("#details").empty()
@@ -22,16 +21,16 @@ function searchRepositories() {
       // This is called when an error occurs
       displayError("repos")
     });
-  // });
+  });
 }
 
 function showCommits(userName, repo) {
   const details = "Commits"
-  // $(document).ready(function (){
+  $(document).ready(function (){
     $("#errors").empty()
     $.get(`https://api.github.com/repos/${userName}/${repo}/commits`, function(data) {
-      // This is executed when the .html file request exists
-      const src = document.getElementById("commits-template").innerHTML
+      // This is executed when the file request succeeds
+      const src = $('#commits-template').val()
       const template = Handlebars.compile(src)
       const commitList = template(data)
       $("#details").empty().append(details + " for Repository: " + repo + commitList);
@@ -39,7 +38,7 @@ function showCommits(userName, repo) {
       // This is called when an error occurs
       displayError("commits")
     });
-  // });
+  });
 }
 
 function displayError(param) {

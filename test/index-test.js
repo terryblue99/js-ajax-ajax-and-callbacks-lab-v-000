@@ -4,6 +4,7 @@ const fs = require('fs')
 const jsdom = require('mocha-jsdom')
 const path = require('path')
 var sinon = require('sinon')
+var Handlebars = require('handlebars')
 
 describe('index.js', () => {
   const html = fs.readFileSync(path.resolve(__dirname, '..', 'index.html'), 'utf-8')

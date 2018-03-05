@@ -6,13 +6,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function searchRepositories() {
   const searchTerms = $('#searchTerms').val()
   $(document).ready(function (){
+
+    $("#results").empty()
+    $("#details").empty()
     $("#errors").empty()
+
     $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, function(data) {
 
       if (data.total_count == 0) {
-        // This is executed when the file request succeeds but no data returned
-        $("#results").empty()
-        $("#details").empty()
+        // This is called when the file request succeeds but no data returned
         return displayError("no data found")
       }
 
@@ -20,8 +22,7 @@ function searchRepositories() {
       const src = document.getElementById("repository-template").innerHTML
       const template = Handlebars.compile(src)
       const repoList = template(data.items)
-      $("#details").empty()
-      $("#results").empty().append(repoList)
+      $("#results").append(repoList)
 
     }).fail(function() {
       // This is called when an error occurs
@@ -33,14 +34,17 @@ function searchRepositories() {
 function showCommits(userName, repo) {
   const details = "Commits"
   $(document).ready(function (){
+
+    $("#details").empty()
     $("#errors").empty()
+
     $.get(`https://api.github.com/repos/${userName}/${repo}/commits`, function(data) {
 
       // This is executed when the file request succeeds
       const src = document.getElementById("commits-template").innerHTML
       const template = Handlebars.compile(src)
       const commitList = template(data)
-      $("#details").empty().append(details + " for Repository: " + repo + commitList)
+      $("#details").append(details + " for Repository: " + repo + commitList)
 
     }).fail(function() {
       // This is called when an error occurs
@@ -50,11 +54,14 @@ function showCommits(userName, repo) {
 }
 
 function displayError(param) {
+
   var errorMessage = "I'm sorry, there's been an error. Please try again."
   if (param == "commits") {
       errorMessage = "I'm sorry, there's been an error. Please refresh the page and try again."
   } else if (param == "no data found") {
       errorMessage = "I'm sorry, there's no data for that search. Please try again."
   }
+
   $("#errors").append(errorMessage);
+  
 }

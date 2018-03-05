@@ -1,3 +1,5 @@
+$(document).ready(function (){
+});
 // Register a partial with Handlebars when the page loads
 document.addEventListener("DOMContentLoaded", function(event) {
   Handlebars.registerPartial("authorPartial", document.getElementById("author-partial-template").innerHTML)
@@ -6,24 +8,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function searchRepositories() {
   // var searchTerms = document.getElementById("searchTerms").value
   const searchTerms = $('#searchTerms').val()
-  $(document).ready(function (){
+  // $(document).ready(function (){
     $("#errors").empty()
     $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, function(data) {
       // This is executed when the url file request succeeds
       const src = document.getElementById("repository-template").innerHTML
       const template = Handlebars.compile(src)
       const repoList = template(data.items)
-      document.getElementById("results").innerHTML = repoList
+      $("#details").empty()
+      $("#results").empty().append(repoList);
+      // document.getElementById("results").innerHTML = repoList
     }).fail(function() {
       // This is called when an error occurs
       displayError("repos")
     });
-  });
+  // });
 }
 
 function showCommits(userName, repo) {
   const details = "Commits"
-  $(document).ready(function (){
+  // $(document).ready(function (){
     $("#errors").empty()
     $.get(`https://api.github.com/repos/${userName}/${repo}/commits`, function(data) {
       // This is executed when the .html file request exists
@@ -35,7 +39,7 @@ function showCommits(userName, repo) {
       // This is called when an error occurs
       displayError("commits")
     });
-  });
+  // });
 }
 
 function displayError(param) {
@@ -43,5 +47,5 @@ function displayError(param) {
   if (param != "repos") {
       errorMessage = "I'm sorry, there's been an error. Please refresh the page and try again."
   }
-  document.getElementById("errors").innerHTML = errorMessage
+  $("#errors").append(errorMessage);
 }

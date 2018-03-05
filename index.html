@@ -17,6 +17,7 @@
         margin-right: 20px;
       }
     </style>
+
   </head>
   <body>
     <main id="main">
@@ -30,22 +31,21 @@
     <div class="flexbox-container">
       <div>
         <h3>Repositories</h3>
-          <div id="results">
-            <script id="repository-template" type="text/x-handlebars-template">
-              <ul>
-               {{#each this}}
-                 <li>
-                   <h2><a href="{{html_url}}" target="_blank">{{name}}</a></h2>
-                   <h3>{{description}}</h3>
-                   <!-- Render the partial template -->
-                   {{> authorPartial owner }}
-                   <h3><a href="{{html_url}}" target="_blank">Profile</a></h3>
-                   <a href="#" onclick="showCommits('{{owner.login}}', '{{name}}')">Show Commits</a>
-                 </li>
-                {{/each}}
-              </ul>
-            </script>
-          </div>
+          <div id="results"></div>
+          <script id="repository-template" type="text/x-handlebars-template">
+            <ul>
+             {{#each this}}
+               <li>
+                 <h2><a href="{{html_url}}" target="_blank">{{name}}</a></h2>
+                 <h3>{{description}}</h3>
+                 <!-- Render the partial template -->
+                 {{> authorPartial owner }}
+                 <h3><a href="{{html_url}}" target="_blank">Profile</a></h3>
+                 <a href="#" onclick="showCommits('{{owner.login}}', '{{name}}')">Show Commits</a>
+               </li>
+              {{/each}}
+            </ul>
+          </script>
         </div>
       <div>
         <h3>Details</h3>
